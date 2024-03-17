@@ -34,7 +34,7 @@ jobs:
           # Required - DingTalk/Lark/WeCom
           app: DingTalk
           # Required - Custom BOT webhook URL
-          webhook: ${{ secrets.DINGTALK_WEBHOOK }}
+          webhook: https://oapi.dingtalk.com/robot/send?access_token=dd88546da75f580089cb9a8849dec0537004583babe2e55b09daddf001b46d03
           # Optional - Used for sign
           # secret: xxxx
           template: >-
