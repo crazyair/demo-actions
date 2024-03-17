@@ -18,5 +18,5 @@ jobs:
         run: node -v
       - uses: visiky/dingtalk-release-notify@main
         with:
-          DING_TALK_TOKEN: ${{ secrets.DING_TALK_ACCESS_TOKEN}}
+          DING_TALK_TOKEN: ${{ secrets.DING_TALK_ACCESS_TOKEN }}
           # DING_TALK_TOKEN: dd88546da75f580089cb9a8849dec0537004583babe2e55b09daddf001b46d03
