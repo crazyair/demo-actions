@@ -5,9 +5,11 @@ name: DingTalk Release Notify
 #   release:
 #     types: [published, edited]
 
-on:
-  discussion:
-    types: [created, edited, locked, unlocked]
+# on:
+#   discussion:
+#     types: [created, edited, locked, unlocked]
+
+on: [push, pull_request]
 
 jobs:
   build:
