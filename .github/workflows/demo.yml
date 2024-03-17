@@ -20,19 +20,11 @@ jobs:
         with:
           app: DingTalk
           webhook: "https://oapi.dingtalk.com/robot/send?access_token=${{ secrets.DING_TALK_ACCESS_TOKEN }}"
-          template: file:///.template/message.json
-          params: >-
+          template: >-
             {
-              "workflow": "${{ github.workflow }}",
-              "workflow_url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+              "msgtype": "markdown",
+              "markdown": {
+                "title": "🔥 @${{ github.event.discussion.user.login }} 创建了讨论：${{ github.event.discussion.title }} ${{ github.event.discussion.html_url }}",
+                "text": "### 🔥 @${{ github.event.discussion.user.login }} 创建了讨论 \n [${{ github.event.discussion.title }}](${{ github.event.discussion.html_url }}) <hr /> \n > 💬 欢迎前往 GitHub 进行讨论，社区可能需要你的帮助。"
+              }
             }
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-          # template: >-
-          #   {
-          #     "msgtype": "markdown",
-          #     "markdown": {
-          #       "title": "🔥 @${{ github.event.discussion.user.login }} 创建了讨论：${{ github.event.discussion.title }} ${{ github.event.discussion.html_url }}",
-          #       "text": "### 🔥 @${{ github.event.discussion.user.login }} 创建了讨论 \n [${{ github.event.discussion.title }}](${{ github.event.discussion.html_url }}) <hr /> \n > 💬 欢迎前往 GitHub 进行讨论，社区可能需要你的帮助。"
-          #     }
-          #   }
