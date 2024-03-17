@@ -20,7 +20,7 @@ jobs:
         with:
           app: DingTalk
           webhook: "https://oapi.dingtalk.com/robot/send?access_token=${{ secrets.DING_TALK_ACCESS_TOKEN }}"
-          template: .template/message.json
+          template: file://.template/message.json
           params: >-
             {
               "workflow": "${{ github.workflow }}",
