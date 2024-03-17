@@ -23,6 +23,8 @@ jobs:
           template: .template/message.json
           params: >-
             {
+              "workflow": "${{ github.workflow }}",
+              "workflow_url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             }
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
