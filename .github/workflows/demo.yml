@@ -44,7 +44,7 @@ jobs:
                 "text": "### 🔥 @afc163 创建了 PR\n[docs(:sparkles:): release 5.15.3](https://qq.com) \n > 💬 快来 CR 吧！"
                  }
             }
-          branch: main
+          branch: main-1
 
       # - uses: visiky/dingtalk-release-notify@main
       #   with:
