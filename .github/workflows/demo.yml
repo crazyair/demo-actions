@@ -13,38 +13,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v4
-      # - uses: actions/setup-node@v4
-      #   with:
-      #     node-version: 18
-      - name: aaa
-        run: node -v
       - name: dingtalk robot message
-        # uses: fifsky/dingtalk-action@master
-        # with:
-        #   url: ${{ secrets.DINGTALK_WEBHOOK}}
-        #   type: markdown
-        #   content: |
-        #     # Tips
-        #     ## Hello
-        #     > from github action message
-        #     > ^_^
         uses: northwang-lucky/chatbot-webhook-client@v1.1.1
         with:
-          # Required - DingTalk/Lark/WeCom
           app: DingTalk
           webhook: "https://oapi.dingtalk.com/robot/send?access_token=${{ secrets.DING_TALK_ACCESS_TOKEN }}"
-          # Optional - Used for sign
-          # secret: xxxx
-          # template: >-
-          #   {
-          #     "msgtype": "markdown",
-          #     "markdown": {
-          #       "title": "aaaa",
-          #       "text": "### 🔥 @afc163 创建了 PR\n[docs(:sparkles:): release 5.15.3](https://qq.com) \n > 💬 快来 CR 吧！"
-          #        }
-          #   }
-
           template: >-
             {
               "msgtype": "markdown",
@@ -53,11 +26,3 @@ jobs:
                 "text": "### 🔥 @${{ github.event.discussion.user.login }} 创建了讨论 \n ### [${{ github.event.discussion.title }}](${{ github.event.discussion.html_url }}) <hr /> \n > 💬 欢迎前往 GitHub 进行讨论，社区可能需要你的帮助。"
               }
             }
-
-      # - uses: visiky/dingtalk-release-notify@main
-      #   with:
-      #     DING_TALK_TOKEN: ${{ secrets.DING_TALK_ACCESS_TOKEN }}
-      #     notify_title: "🎉 DingTalk Release Notify 发布 release {release_tag} 🎉" # Template of nofify title message in DingTalk
-      #     notify_body: "## { title }<hr /> ![](https://gw.alipayobjects.com/zos/antfincdn/pJ5JP3Ntkd/2021-08.png) <hr /> { body } <hr />" # Template of nofify body message in DingTalk
-      #     notify_footer: "> 前往 [**G2Plot**]({ release_url }) 查看完整信息." # Template of nofify footer message in DingTalk
-      #     at_all: false # whether to ding everybody
