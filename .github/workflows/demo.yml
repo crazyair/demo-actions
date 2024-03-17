@@ -36,15 +36,23 @@ jobs:
           webhook: "https://oapi.dingtalk.com/robot/send?access_token=${{ secrets.DING_TALK_ACCESS_TOKEN }}"
           # Optional - Used for sign
           # secret: xxxx
+          # template: >-
+          #   {
+          #     "msgtype": "markdown",
+          #     "markdown": {
+          #       "title": "aaaa",
+          #       "text": "### 🔥 @afc163 创建了 PR\n[docs(:sparkles:): release 5.15.3](https://qq.com) \n > 💬 快来 CR 吧！"
+          #        }
+          #   }
+
           template: >-
             {
               "msgtype": "markdown",
               "markdown": {
-                "title": "aaaa",
-                "text": "### 🔥 @afc163 创建了 PR\n[docs(:sparkles:): release 5.15.3](https://qq.com) \n > 💬 快来 CR 吧！"
-                 }
+                "title": "🔥 @${{ github.event.discussion.user.login }} 创建了讨论：${{ github.event.discussion.title }} ${{ github.event.discussion.html_url }}",
+                "text": "### 🔥 @${{ github.event.discussion.user.login }} 创建了讨论 \n ### [${{ github.event.discussion.title }}](${{ github.event.discussion.html_url }}) <hr /> \n > 💬 欢迎前往 GitHub 进行讨论，社区可能需要你的帮助。"
+              }
             }
-          branch: main-1
 
       # - uses: visiky/dingtalk-release-notify@main
       #   with:
