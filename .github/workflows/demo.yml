@@ -16,7 +16,7 @@ jobs:
       - name: dingtalk robot message
         uses: fifsky/dingtalk-action@master
         with:
-          url: ${{ secrets.DING_TALK_ACCESS_TOKEN}}
+          url: ${{ secrets.DINGTALK_WEBHOOK}}
           type: markdown
           content: |
             # Tips
