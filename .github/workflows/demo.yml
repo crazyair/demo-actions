@@ -34,13 +34,17 @@ jobs:
           # Required - DingTalk/Lark/WeCom
           app: DingTalk
           # Required - Custom BOT webhook URL
-          webhook: https://oapi.dingtalk.com/robot/send?access_token=dd88546da75f580089cb9a8849dec0537004583babe2e55b09daddf001b46d03
+          # webhook: https://oapi.dingtalk.com/robot/send?access_token=dd88546da75f580089cb9a8849dec0537004583babe2e55b09daddf001b46d03
+          webhook: "https://oapi.dingtalk.com/robot/send?access_token=${{ secrets.DINGTALK_WEBHOOK }}"
           # Optional - Used for sign
           # secret: xxxx
           template: >-
             {
-              "msgtype": "text",
-              "text": { "content": "# This is a test message." }
+              "msgtype": "markdown",
+              "markdown": {
+                "title": "aaaa",
+                "text": "### 🔥 @afc163 创建了 PR\n[docs(:sparkles:): release 5.15.3](https://qq.com) \n > 💬 快来 CR 吧！"
+                 }
             }
 
       # - uses: visiky/dingtalk-release-notify@main
