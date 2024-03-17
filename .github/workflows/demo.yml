@@ -20,15 +20,29 @@ jobs:
       - name: aaa
         run: node -v
       - name: dingtalk robot message
-        uses: fifsky/dingtalk-action@master
+        # uses: fifsky/dingtalk-action@master
+        # with:
+        #   url: ${{ secrets.DINGTALK_WEBHOOK}}
+        #   type: markdown
+        #   content: |
+        #     # Tips
+        #     ## Hello
+        #     > from github action message
+        #     > ^_^
+        uses: northwang-lucky/chatbot-webhook-client@v1.1.1
         with:
-          url: ${{ secrets.DINGTALK_WEBHOOK}}
-          type: markdown
-          content: |
-            # Tips
-            ## Hello
-            > from github action message
-            > ^_^
+          # Required - DingTalk/Lark/WeCom
+          app: DingTalk
+          # Required - Custom BOT webhook URL
+          webhook: ${{ secrets.DINGTALK_WEBHOOK }}
+          # Optional - Used for sign
+          # secret: xxxx
+          template: >-
+            {
+              "msgtype": "text",
+              "text": { "content": "# This is a test message." }
+            }
+
       # - uses: visiky/dingtalk-release-notify@main
       #   with:
       #     DING_TALK_TOKEN: ${{ secrets.DING_TALK_ACCESS_TOKEN }}
